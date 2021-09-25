@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="estilos/styles.css" media="screen"/>
+        <title>WebScraping</title>
+        <style>
+            *{
+                margin: 0;
+                font-family: 'Courier New', Courier, monospace;
+                box-sizing: border-box;
+            }
+            #main{
+                text-align: center;
+                padding: 50px;
+            }
+            #repeter{
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 18px;
+            }
+            #fixed{
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-size: 25px;
+                background-color: black;
+                color: white;
+                font-weight: bold;
+            }
+            header{
+                background-color: black;
+                padding: 2px;
+                color: white;
+            }
+            .indicador{
+                text-align: left;
+                font-size: 20px;
+                font-weight: bold;
+            }
+        </style>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <h3><center>Mineração de dados em sites de Notícias<center></h3>
+        </header>
+        
+        <div id="main">
+            <form method="GET">
+                <label for="g1">
+                    <input class="btn red" type="submit" name="g1" id="g1" value="G1">
+                </label>
+                <label for="r7">
+                    <input class="btn blue" type="submit" name="r7" id="r7" value="R7">
+                </label>
+                <label for="uol">
+                    <input class="btn orange" type="submit" name="uol" id="uol" value="UOL">
+                </label>
+            </form>
+            <br>
+            <br>
+            <p class="indicador">Total de Registros Encontrados: {{ contreg }}</p>
+            <div id="fixed">
+                <thead>
+                    <table>
+                        <tr>
+                            <th><center>Notícias</center></th>
+                        </tr>
+                    </table>
+                </thead>
+            </div>
+
+            <div id="repeter">
+                <table class="responsive-table">
+                    <tbody>
+                                <!--Notícias G1-->
+                        {% if noticiasG1_txttag1Title %}
+                            {%for i in noticiasG1_txttag1Title%}
+                                {%if i %}
+                                    <tr>
+                                        <td>
+                                            <p>{{ i }}</p>
+                                            <td>
+                                                <input class="btn green" type="submit" name="saveg1" value="Salvar">
+                                            </td>
+                                        </td>
+                                    </tr>
+                                {%endif%}
+                            {%endfor%}
+                        {% endif %}
+                    </tbody>
+                </table>
+
+                <table class="responsive-table">
+                    <tbody>
+                                <!--Notícias R7-->
+                        {% if noticiasR7_txttag1title %}
+                            {%for i in noticiasR7_txttag1title%}
+                                {%if i %}
+                                    <tr>
+                                        <td>
+                                            <p>{{ i }}</p>
+                                        </td>
+                                        <td>
+                                            <input class="btn green" type="submit" name="saver7" value="Salvar">
+                                        </td>
+                                    </tr>
+                                {%endif%}
+                            {%endfor%}
+                        {% endif %}
+                    </tbody>
+                </table>
+
+                <table class="responsive-table">
+                    <tbody>
+                                <!--Notícias UOL-->
+                        {% if noticiasUOL_txttag1title %}
+                            {%for i in noticiasUOL_txttag1title%}
+                                {%if i %}
+                                    <tr>
+                                        <td>
+                                            <p>{{ i }}</p>
+                                        </td>
+                                        <td>
+                                            <input class="btn green" type="submit" name="saveuol" value="Salvar">
+                                        </td>
+                                    </tr>
+                                {%endif%}
+                            {%endfor%}
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div> 
+        
+    </body>
+</html>
